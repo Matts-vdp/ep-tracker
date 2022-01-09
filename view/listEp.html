@@ -10,12 +10,20 @@
     <li><a href="/">New items</a></li>
     <li><a href="/list">In progress</a></li>
 </ul>
-<h1>Watch list</h1>
+<h1>In progress</h1>
+<form action="/epchange" method="post">
 <ul>
     {{range .}}
-        <li>{{.Name}}</li>
+        <li>
+            <div>
+                {{.Name}} {{.Ep}} 
+                <button type="submit" name="next" value="{{.Id}}">Next</button>
+                <button type="submit" name="prev" value="{{.Id}}">Prev</button>
+            </div>
+        </li>
     {{end}}
 </ul>
+</form>
 
 
 </body>

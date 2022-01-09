@@ -23,7 +23,7 @@ button, .button {
     border-radius: 10px;
     border: none;
     text-align: center;
-    font-size: 20px;
-    padding: 10px 30px 10px 30px;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
     margin: 5px;
 }
