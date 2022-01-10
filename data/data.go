@@ -48,7 +48,7 @@ func DelItem(id int) {
 
 }
 func UpdateItem(id, num int) {
-	db.Exec("")
+	//db.Exec("")
 }
 
 func Init() {
@@ -57,6 +57,7 @@ func Init() {
 	if err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
+	db.Exec("create table IF NOT EXISTS episodes (Id serial primary key, Name varchar(), Ep int)")
 }
 
 func Close() {
