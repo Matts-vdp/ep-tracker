@@ -24,6 +24,7 @@ func AddEp(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	name := req.Form.Get("name")
 	storage.Add(name)
+	NewEp(w, req)
 }
 
 /*func ChangeEp(w http.ResponseWriter, req *http.Request) {
@@ -51,6 +52,7 @@ func main() {
 	http.HandleFunc("/", NewEp)
 	http.HandleFunc("/list", ListEp)
 	//http.HandleFunc("/epchange", ChangeEp)
+	http.HandleFunc("/add", AddEp)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":"+port, nil)
 }
