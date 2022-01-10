@@ -41,6 +41,7 @@ func DelEp(w http.ResponseWriter, req *http.Request) {
 }
 
 func ChangeEp(w http.ResponseWriter, req *http.Request) {
+	log.Println("testjer")
 	req.ParseForm()
 	if s := req.Form.Get("next"); s != "" {
 		id, err := strconv.Atoi(s)
