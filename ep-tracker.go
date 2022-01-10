@@ -40,23 +40,30 @@ func DelEp(w http.ResponseWriter, req *http.Request) {
 	http.Redirect(w, req, "/", http.StatusFound)
 }
 
-/*func ChangeEp(w http.ResponseWriter, req *http.Request) {
+func ChangeEp(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	if s := req.Form.Get("next"); s != "" {
 		id, err := strconv.Atoi(s)
 		if err != nil {
 			return
 		}
-		data.UpdateItem(id, 1)
+		storage.Update(id, 1)
 	} else if s := req.Form.Get("prev"); s != "" {
 		id, err := strconv.Atoi(s)
 		if err != nil {
 			return
 		}
-		data.UpdateItem(id, -1)
+		storage.Update(id, -1)
+	} else if s := req.Form.Get("Del"); s != "" {
+		id, err := strconv.Atoi(s)
+		if err != nil {
+			return
+		}
+		storage.Del(id)
 	}
-	ListEp(w, req)
-}*/
+	target := req.Form.Get("target")
+	http.Redirect(w, req, target, http.StatusFound)
+}
 
 func main() {
 	storage.Init()
@@ -64,9 +71,7 @@ func main() {
 	port := os.Getenv("PORT")
 	http.HandleFunc("/", NewEp)
 	http.HandleFunc("/list", ListEp)
-	//http.HandleFunc("/epchange", ChangeEp)
-	http.HandleFunc("/add", AddEp)
-	http.HandleFunc("/del", DelEp)
+	http.HandleFunc("/epchange", ChangeEp)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":"+port, nil)
 }

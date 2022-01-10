@@ -15,20 +15,20 @@
     <input type="text" name="name" placeholder="Name">
     <input type="submit" class="blue" value="+">
 </form>
-
+<form action="/epchange" method="post">
+<input type="hidden" name="target" value="/">
 <ul>
     {{range .}}
         <li>
             <div>
                 {{.Name}} 
-                <form action="/del" method="post">
-                    <button type="submit" class="red" name="id" value="{{.Id}}">Del</button>
-                </form>
+                <button type="submit" class="red" name="id" value="{{.Id}}">Del</button>
+                <button type="submit" name="next" value="{{.Id}}">Start</button>
             </div>
         </li>
     {{end}}
 </ul>
-
+</form>
 
 </body>
 <script>

@@ -73,3 +73,18 @@ func Del(id int) {
 		return
 	}
 }
+func Update(id, val int) {
+	row := db.QueryRow("select ep from episodes where id=$1", id)
+	var ep int
+	err := row.Scan(&ep)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	ep += val
+	_, err = db.Exec("update episodes set ep=$1 where id=$2", ep, id)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+}
