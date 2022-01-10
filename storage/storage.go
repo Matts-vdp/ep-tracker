@@ -48,6 +48,7 @@ func Init() {
 		log.Fatalf("Error opening database: %q", err)
 	}
 	db.Exec("create table IF NOT EXISTS episodes (Id serial primary key, Name varchar(), Ep int)")
+	log.Fatalf("Error opening database: %q", err)
 }
 
 func Close() {
