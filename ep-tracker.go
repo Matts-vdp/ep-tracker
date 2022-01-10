@@ -54,7 +54,7 @@ func ChangeEp(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 		storage.Update(id, -1)
-	} else if s := req.Form.Get("Del"); s != "" {
+	} else if s := req.Form.Get("del"); s != "" {
 		id, err := strconv.Atoi(s)
 		if err != nil {
 			return
