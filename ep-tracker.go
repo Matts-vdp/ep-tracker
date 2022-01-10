@@ -24,7 +24,7 @@ func AddEp(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	name := req.Form.Get("name")
 	storage.Add(name)
-	NewEp(w, req)
+	http.Redirect(w, req, "/", http.StatusFound)
 }
 
 /*func ChangeEp(w http.ResponseWriter, req *http.Request) {
