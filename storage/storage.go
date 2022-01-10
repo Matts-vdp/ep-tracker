@@ -48,7 +48,9 @@ func Init() {
 		log.Fatalf("Error opening database: %q", err)
 	}
 	db.Exec("create table IF NOT EXISTS episodes (Id serial primary key, Name varchar(), Ep int)")
-	log.Fatalf("Error opening database: %q", err)
+	if err != nil {
+		log.Fatalf("Error opening database: %q", err)
+	}
 }
 
 func Close() {
@@ -58,7 +60,7 @@ func Close() {
 func Add(name string) {
 	_, err := db.Exec("insert into episodes (name, ep) values ($1, 0)", name)
 	if err != nil {
-		log.Println(err)
+		log.Fatalln(err)
 		return
 	}
 }
