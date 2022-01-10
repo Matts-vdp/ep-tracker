@@ -1,4 +1,4 @@
-package data
+package storage
 
 import (
 	"database/sql"
@@ -41,16 +41,6 @@ func GetOld() []Item {
 	return get(query)
 }
 
-func AddItem(name string) {
-	// item := Item{Name: name}
-}
-func DelItem(id int) {
-
-}
-func UpdateItem(id, num int) {
-	//db.Exec("")
-}
-
 func Init() {
 	var err error
 	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
@@ -62,4 +52,12 @@ func Init() {
 
 func Close() {
 	db.Close()
+}
+
+func Add(name string) {
+	_, err := db.Exec("insert into episodes (name, ep) values ($1, 0)", name)
+	if err != nil {
+		log.Println(err)
+		return
+	}
 }

@@ -4,24 +4,29 @@ import (
 	"html/template"
 	"net/http"
 	"os"
-	"strconv"
 
-	"github.com/Matts-vdp/ep-tracker/data"
+	"github.com/Matts-vdp/ep-tracker/storage"
 )
 
 func NewEp(w http.ResponseWriter, req *http.Request) {
-	items := data.GetNew()
+	items := storage.GetNew()
 	tmpl := template.Must(template.ParseFiles("view/newEp.html"))
 	tmpl.Execute(w, items)
 }
 
 func ListEp(w http.ResponseWriter, req *http.Request) {
-	items := data.GetOld()
+	items := storage.GetOld()
 	tmpl := template.Must(template.ParseFiles("view/listEp.html"))
 	tmpl.Execute(w, items)
 }
 
-func ChangeEp(w http.ResponseWriter, req *http.Request) {
+func AddEp(w http.ResponseWriter, req *http.Request) {
+	req.ParseForm()
+	name := req.Form.Get("name")
+	storage.Add(name)
+}
+
+/*func ChangeEp(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	if s := req.Form.Get("next"); s != "" {
 		id, err := strconv.Atoi(s)
@@ -37,15 +42,15 @@ func ChangeEp(w http.ResponseWriter, req *http.Request) {
 		data.UpdateItem(id, -1)
 	}
 	ListEp(w, req)
-}
+}*/
 
 func main() {
-	data.Init()
-	defer data.Close()
+	storage.Init()
+	defer storage.Close()
 	port := os.Getenv("PORT")
 	http.HandleFunc("/", NewEp)
 	http.HandleFunc("/list", ListEp)
-	http.HandleFunc("/epchange", ChangeEp)
+	//http.HandleFunc("/epchange", ChangeEp)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":"+port, nil)
 }
