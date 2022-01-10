@@ -15,9 +15,17 @@
     <input type="text" name="name" placeholder="Name">
     <input type="submit" class="blue" value="+">
 </form>
+
 <ul>
     {{range .}}
-        <li>{{.Name}}</li>
+        <li>
+            <div>
+                {{.Name}} 
+                <form action="/del" method="post">
+                    <button type="submit" class="red" name="id" value="{{.Id}}">Del</button>
+                </form>
+            </div>
+        </li>
     {{end}}
 </ul>
 

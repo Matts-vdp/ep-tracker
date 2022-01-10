@@ -65,3 +65,11 @@ func Add(name string) {
 		return
 	}
 }
+
+func Del(id int) {
+	_, err := db.Exec("delete from episodes where id=$1", id)
+	if err != nil {
+		log.Fatalln(err)
+		return
+	}
+}

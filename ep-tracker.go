@@ -2,8 +2,10 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/Matts-vdp/ep-tracker/storage"
 )
@@ -24,6 +26,16 @@ func AddEp(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	name := req.Form.Get("name")
 	storage.Add(name)
+	http.Redirect(w, req, "/", http.StatusFound)
+}
+func DelEp(w http.ResponseWriter, req *http.Request) {
+	req.ParseForm()
+	id, err := strconv.Atoi(req.Form.Get("id"))
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	storage.Del(id)
 	http.Redirect(w, req, "/", http.StatusFound)
 }
 
