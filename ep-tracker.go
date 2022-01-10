@@ -65,6 +65,7 @@ func main() {
 	http.HandleFunc("/list", ListEp)
 	//http.HandleFunc("/epchange", ChangeEp)
 	http.HandleFunc("/add", AddEp)
+	http.HandleFunc("/del", DelEp)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.ListenAndServe(":"+port, nil)
 }
