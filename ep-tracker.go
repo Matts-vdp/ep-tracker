@@ -32,7 +32,7 @@ func DelEp(w http.ResponseWriter, req *http.Request) {
 	req.ParseForm()
 	id, err := strconv.Atoi(req.Form.Get("id"))
 	if err != nil {
-		log.Println(err)
+		log.Fatalln(err)
 		return
 	}
 	storage.Del(id)
