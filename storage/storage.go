@@ -33,12 +33,12 @@ func get(query string) []Item {
 }
 
 func GetNew() []Item {
-	query := "SELECT * FROM episodes WHERE ep = 0"
+	query := "SELECT * FROM episodes WHERE ep = 0 ORDER BY id DESC"
 	return get(query)
 }
 
 func GetOld() []Item {
-	query := "SELECT * FROM episodes WHERE ep != 0"
+	query := "SELECT * FROM episodes WHERE ep != 0 ORDER BY id DESC"
 	return get(query)
 }
 
