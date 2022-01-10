@@ -19,6 +19,7 @@ type Item struct {
 func get(query string) []Item {
 	rows, err := db.Query(query)
 	if err != nil {
+		log.Fatalf("Error opening database: %q", err)
 		return nil
 	}
 	defer rows.Close()
