@@ -61,7 +61,7 @@ func Close() {
 func Add(name string) {
 	_, err := db.Exec("insert into episodes (name, ep) values ($1, 0)", name)
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 		return
 	}
 }
@@ -69,7 +69,7 @@ func Add(name string) {
 func Del(id int) {
 	_, err := db.Exec("delete from episodes where id=$1", id)
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 		return
 	}
 }
