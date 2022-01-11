@@ -86,6 +86,7 @@ button, .button {
     background-color: var(--navbar);
     margin-bottom: 10px;
     font-size: 20px;
+    width: 100vw;
 }
 .navitem {
     padding: 10px;
