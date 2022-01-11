@@ -1,3 +1,4 @@
+/* Color variables */
 :root {
     --blue: #005295;
     --green: #00b60f;
@@ -11,14 +12,7 @@
     --fontsize: 20px;
 }
 
-h1 {text-align: center;}
-body {
-    margin: 0;
-    width: 100vw;
-    background-color: var(--back);
-    color: var(--letter);
-}
-
+/* Button */
 .red {
     background-color: #ce1e1e;
     border: 2px solid #ce1e1e;
@@ -43,7 +37,6 @@ body {
     color: var(--back);
     background-color: var(--blue);
 }
-
 .black {
     background-color: var(--back); 
     border: 2px solid var(--letter);
@@ -53,15 +46,6 @@ body {
     background-color: var(--letter);
     color: var(--back);
 }
-
-
-p {
-    margin: 0;
-    padding: 5px;
-    display: inline-block;
-    font-size: var(--fontsize);
-}
-
 button, .button {
     border-radius: 10px;
     text-align: center;
@@ -70,6 +54,21 @@ button, .button {
     margin: 0px;
 }
 
+h1 {text-align: center;}
+body {
+    margin: 0;
+    width: 100vw;
+    background-color: var(--back);
+    color: var(--letter);
+}
+p {
+    margin: 0;
+    padding: 5px;
+    display: inline-block;
+    font-size: var(--fontsize);
+}
+
+/* Keep buttons together when resizing */
 .tog {
     display: inline-block;
 }
@@ -79,6 +78,7 @@ button, .button {
     display: inline-block;
 }
 
+/* Navigation bar */
 .nav {
     display: flex;
     justify-content: left;
@@ -89,7 +89,6 @@ button, .button {
 }
 .navitem {
     padding: 10px;
-    
 }
 .navitem:hover {
     background-color: var(--navbarsel);
@@ -101,13 +100,14 @@ button, .button {
     border-top-right-radius: 15px;
 }
 .sel, .sel:hover {
-    color: var(--navbarselcolor);
+    color: var(--letter);
 }
 a, a:active, a:hover {
     color: var(--navbarcolor);
     text-decoration: none;
 }
 
+/* Table */
 table {
     width: 100vw;
     padding: 20px;
@@ -133,6 +133,8 @@ td {
 .done {
     text-decoration: line-through;
 }
+
+/* Input form */
 .add {
     padding-bottom: 10px;
     padding-left: 10px;
