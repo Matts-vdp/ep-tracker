@@ -45,21 +45,28 @@ func ChangeEp(w http.ResponseWriter, req *http.Request) {
 	if s := req.Form.Get("next"); s != "" {
 		id, err := strconv.Atoi(s)
 		if err != nil {
+			http.Redirect(w, req, "/list", http.StatusFound)
 			return
 		}
-		storage.Update(id, 1)
+		storage.UpdateEp(id, 1)
 	} else if s := req.Form.Get("prev"); s != "" {
 		id, err := strconv.Atoi(s)
 		if err != nil {
 			return
 		}
-		storage.Update(id, -1)
+		storage.UpdateEp(id, -1)
 	} else if s := req.Form.Get("del"); s != "" {
 		id, err := strconv.Atoi(s)
 		if err != nil {
 			return
 		}
 		storage.Del(id)
+	} else if s := req.Form.Get("done"); s != "" {
+		id, err := strconv.Atoi(s)
+		if err != nil {
+			return
+		}
+		storage.Done(id)
 	}
 	target := req.Form.Get("target")
 	http.Redirect(w, req, target, http.StatusFound)

@@ -11,9 +11,11 @@ import (
 var db *sql.DB
 
 type Item struct {
-	Id   int
-	Name string
-	Ep   int
+	Id     int
+	Name   string
+	Season int
+	Ep     int
+	Done   bool
 }
 
 func get(query string) []Item {
@@ -33,7 +35,7 @@ func get(query string) []Item {
 }
 
 func GetNew() []Item {
-	query := "SELECT * FROM episodes WHERE ep = 0 ORDER BY id DESC"
+	query := "SELECT * FROM episodes WHERE season=1 and ep = 0 ORDER BY done DESC, id DESC"
 	return get(query)
 }
 
@@ -48,7 +50,7 @@ func Init() {
 	if err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
-	_, err = db.Exec("create table IF NOT EXISTS episodes (Id serial primary key, Name varchar(20), Ep int)")
+	_, err = db.Exec("create table IF NOT EXISTS episodes (Id serial primary key, Name varchar(20), Season int,  Ep int, Done boolean)")
 	if err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
@@ -59,7 +61,7 @@ func Close() {
 }
 
 func Add(name string) {
-	_, err := db.Exec("insert into episodes (name, ep) values ($1, 0)", name)
+	_, err := db.Exec("insert into episodes (name, season, ep, done) values ($1, 1, 0, FALSE)", name)
 	if err != nil {
 		log.Println(err)
 		return
@@ -73,7 +75,16 @@ func Del(id int) {
 		return
 	}
 }
-func Update(id, val int) {
+
+func Done(id int) {
+	_, err := db.Exec("update episodes set done=TRUE where id=$1", id)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+}
+
+func UpdateEp(id, val int) {
 	row := db.QueryRow("select ep from episodes where id=$1", id)
 	var ep int
 	err := row.Scan(&ep)
