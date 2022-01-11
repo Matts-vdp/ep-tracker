@@ -13,9 +13,9 @@
 
 <form action="/epchange" method="post">
 <input type="hidden" name="target" value="/list">
-{{range .}}
 <table>
     <th></th>
+    {{range .}}
     <tr>
         <td><p>{{.Name}}</p></td>
         <td class="r">
@@ -37,9 +37,8 @@
             <button type="submit" class="black" name="done" value="{{.Id}}">Done</button> 
         </td>
     </tr>
+    {{end}}
 </table>
-
-{{end}}
 </form>
 
 
