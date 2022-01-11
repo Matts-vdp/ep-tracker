@@ -124,6 +124,7 @@ td {
 }
 .l {
     text-align: left;
+    padding-left: 10px;
 }
 .add {
     padding-bottom: 10px;
