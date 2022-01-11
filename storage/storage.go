@@ -35,12 +35,12 @@ func get(query string) []Item {
 }
 
 func GetNew() []Item {
-	query := "SELECT * FROM episodes WHERE season=1 and ep = 0 ORDER BY done DESC, id DESC"
+	query := "SELECT * FROM episodes WHERE season=1 and ep=0 ORDER BY done ASC, id DESC"
 	return get(query)
 }
 
 func GetOld() []Item {
-	query := "SELECT * FROM episodes WHERE ep != 0 ORDER BY id DESC"
+	query := "SELECT * FROM episodes where not (ep = 0 and season = 1) ORDER BY done ASC, id DESC"
 	return get(query)
 }
 
@@ -77,7 +77,15 @@ func Del(id int) {
 }
 
 func Done(id int) {
-	_, err := db.Exec("update episodes set done=TRUE where id=$1", id)
+	row := db.QueryRow("select done from episodes where id=$1", id)
+	var done bool
+	err := row.Scan(&done)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	done = !done
+	_, err = db.Exec("update episodes set done=$1 where id=$2", done, id)
 	if err != nil {
 		log.Println(err)
 		return
@@ -93,6 +101,9 @@ func UpdateEp(id, val int) {
 		return
 	}
 	ep += val
+	if ep < 1 {
+		ep = 1
+	}
 	_, err = db.Exec("update episodes set ep=$1 where id=$2", ep, id)
 	if err != nil {
 		log.Println(err)
