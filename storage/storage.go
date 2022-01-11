@@ -50,7 +50,7 @@ func Init() {
 	if err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
-	_, err = db.Exec("create table IF NOT EXISTS episodes (Id serial primary key, Name varchar(20), Season int,  Ep int, Done boolean)")
+	_, err = db.Exec("create table IF NOT EXISTS episodes (Id serial primary key, Name varchar(40), Season int,  Ep int, Done boolean)")
 	if err != nil {
 		log.Fatalf("Error opening database: %q", err)
 	}
