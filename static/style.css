@@ -122,6 +122,9 @@ td {
 .r {
     text-align: right;
 }
+.r {
+    text-align: left;
+}
 .add {
     padding-bottom: 10px;
 }
