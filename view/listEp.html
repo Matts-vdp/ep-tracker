@@ -3,7 +3,7 @@
 <head>
 <title>ep-tracker</title>
 <link rel="icon" href="/static/logo.png" type="image/x-icon">
-<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="../static/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=0.8">
 </head>
 <body>
@@ -45,8 +45,8 @@
                 </div>
             </td>
             <td class="r">
-                <button type="submit" class="red" name="del" value="{{.Id}}">Del</button>
                 <button type="submit" class="black" name="done" value="{{.Id}}">Done</button> 
+                <button type="submit" class="red" name="del" value="{{.Id}}">Del</button>
             </td>
         </tr>
         {{end}}

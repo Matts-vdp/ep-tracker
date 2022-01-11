@@ -3,7 +3,7 @@
 <head>
 <title>ep-tracker</title>
 <link rel="icon" href="/static/logo.png" type="image/x-icon">
-<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="../static/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=0.8">
 </head>
 <body>
@@ -12,8 +12,8 @@
     <div class="navitem"><a href="/list">In Progress</a></div>
 </div>
 <form action="/add" method="post" class="add">
-    <input type="text" name="name" placeholder="Name">
-    <input type="submit" class="blue" value="+">
+    <input type="text" class="input" name="name" placeholder="Name">
+    <button type="submit" class="blue insubmit" value="+">+</button>
 </form>
 
 <form action="/epchange" method="post">

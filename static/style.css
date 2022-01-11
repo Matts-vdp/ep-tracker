@@ -8,6 +8,7 @@
     --navbarcolor: white;
     --navbarselcolor: black;
     --border: lightgray;
+    --fontsize: 20px;
 }
 
 h1 {text-align: center;}
@@ -33,7 +34,6 @@ body {
     background-color: var(--green);
     color: black;
 }
-
 .blue {
     border: 2px solid var(--blue);
     background-color: var(--back);
@@ -45,22 +45,21 @@ body {
 }
 
 .black {
-    background-color: #00222e; 
-    border: 2px solid #00222e;
-    color:ghostwhite
+    background-color: var(--back); 
+    border: 2px solid var(--letter);
+    color: var(--letter)
 }
-.black:hover {
-    background-color: #5a5a5a;
+.black:hover, .black:active {
+    background-color: var(--letter);
+    color: var(--back);
 }
-.black:active{
-    background-color: #001f2a;
-}
+
 
 p {
     margin: 0;
     padding: 5px;
     display: inline-block;
-    font-size: 20px;
+    font-size: var(--fontsize);
 }
 
 button, .button {
@@ -85,11 +84,12 @@ button, .button {
     justify-content: left;
     background-color: var(--navbar);
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: var(--fontsize);
     width: 100vw;
 }
 .navitem {
     padding: 10px;
+    
 }
 .navitem:hover {
     background-color: var(--navbarsel);
@@ -97,6 +97,8 @@ button, .button {
 .selected, .selected:hover {
     background-color: var(--back);
     color: var(--navbarselcolor);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 .sel, .sel:hover {
     color: var(--navbarselcolor);
@@ -119,7 +121,7 @@ td {
     border-top: 1px solid var(--border);
     padding: 5px;
     padding-bottom: 15px;
-    font-size: 20px;
+    font-size: var(--fontsize);
 }
 .r {
     text-align: right;
@@ -128,10 +130,33 @@ td {
     text-align: left;
     padding-left: 10px;
 }
+.done {
+    text-decoration: line-through;
+}
 .add {
     padding-bottom: 10px;
     padding-left: 10px;
+    display: flex;
 }
-.done {
-    text-decoration: line-through;
+.input {
+    font-size: var(--fontsize);
+    flex-grow: 2;
+    border: 2px solid var(--blue);
+    border-radius: 5px;
+}
+.input:active {
+    border-radius: 5px;
+}
+.insubmit {
+    background-color: var(--blue);
+    color: var(--back);
+    flex-grow: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.insubmit:hover {
+    background-color: var(--back);
+    color: var(--blue);
 }
