@@ -28,7 +28,7 @@ func get(query string) []Item {
 	items := make([]Item, 0)
 	for rows.Next() {
 		var item Item
-		rows.Scan(&item.Id, &item.Name, &item.Ep)
+		rows.Scan(&item.Id, &item.Name, &item.Season, &item.Ep, &item.Done)
 		items = append(items, item)
 	}
 	return items
