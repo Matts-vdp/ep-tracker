@@ -84,7 +84,7 @@ button, .button {
     justify-content: left;
     background-color: var(--navbar);
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 20px;
 }
 .navitem {
     padding: 10px;
@@ -123,4 +123,7 @@ td {
 }
 .add {
     padding-bottom: 10px;
+}
+.done {
+    text-decoration: line-through;
 }

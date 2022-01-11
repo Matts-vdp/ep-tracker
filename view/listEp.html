@@ -17,7 +17,11 @@
     <th></th>
     {{range .}}
     <tr>
-        <td><p>{{.Name}}</p></td>
+        {{if .Done}}
+            <td><p class="done">{{.Name}}</p></td>
+        {{else}}
+            <td><p>{{.Name}}</p></td>
+        {{end}}
         <td class="r">
             <p>{{.Season}}</p>
             <div class="together">
