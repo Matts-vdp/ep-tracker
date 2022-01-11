@@ -110,3 +110,22 @@ func UpdateEp(id, val int) {
 		return
 	}
 }
+
+func UpdateSeason(id, val int) {
+	row := db.QueryRow("select season from episodes where id=$1", id)
+	var season int
+	err := row.Scan(&season)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	season += val
+	if season < 1 {
+		season = 1
+	}
+	_, err = db.Exec("update episodes set season=$1 where id=$2", season, id)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+}

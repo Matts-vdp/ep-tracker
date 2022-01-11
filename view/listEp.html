@@ -17,7 +17,10 @@
     {{range .}}
         <li>
             <div>
-                {{.Name}} {{.Season}} {{.Ep}} 
+                {{.Name}} {{.Season}}  
+                <button type="submit" class="green" name="nexts" value="{{.Id}}">Next</button>
+                <button type="submit" class="blue" name="prevs" value="{{.Id}}">Prev</button>
+                {{.Ep}}
                 <button type="submit" class="green" name="next" value="{{.Id}}">Next</button>
                 <button type="submit" class="blue" name="prev" value="{{.Id}}">Prev</button>
                 <button type="submit" class="red" name="del" value="{{.Id}}">Del</button>
