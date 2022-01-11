@@ -1,18 +1,59 @@
-h1 {text-align: center;}
-body {margin: 0;}
+:root {
+    --blue: #005295;
+    --green: #00b60f;
+    --back: white;
+    --letter: black;
+    --navbar: #001f2a;
+    --navbarsel: #00394e;
+    --navbarcolor: white;
+    --navbarselcolor: black;
+    --border: lightgray;
+}
 
-.red {background-color: #ce1e1e;}
+h1 {text-align: center;}
+body {
+    margin: 0;
+    background-color: var(--back);
+    color: var(--letter);
+}
+
+.red {
+    background-color: #ce1e1e;
+    border: 2px solid #ce1e1e;
+}
 .red:hover {background-color: #ff0000;}
 .red:active{background-color: #420000;}
-.green {background-color: #00b60f;}
-.green:hover {background-color: #00ff15;}
-.green:active{background-color: #01700a;}
-.blue {background-color: #04b2d1;}
-.blue:hover {background-color: #00d9ff;}
-.blue:active{background-color: #008299;}
-.black {background-color: #00222e; color:ghostwhite}
-.black:hover {background-color: #5a5a5a;}
-.black:active{background-color: #001f2a;}
+.green {
+    border: 2px solid var(--green);
+    background-color: var(--back);
+    color: var(--green)
+}
+.green:hover, .green:active {
+    background-color: var(--green);
+    color: black;
+}
+
+.blue {
+    border: 2px solid var(--blue);
+    background-color: var(--back);
+    color: var(--blue);
+}
+.blue:hover, .blue:active {
+    color: var(--back);
+    background-color: var(--blue);
+}
+
+.black {
+    background-color: #00222e; 
+    border: 2px solid #00222e;
+    color:ghostwhite
+}
+.black:hover {
+    background-color: #5a5a5a;
+}
+.black:active{
+    background-color: #001f2a;
+}
 
 p {
     margin: 0;
@@ -23,9 +64,8 @@ p {
 
 button, .button {
     border-radius: 10px;
-    border: none;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
     padding: 5px 5px 5px 5px;
     margin: 0px;
 }
@@ -42,19 +82,25 @@ button, .button {
 .nav {
     display: flex;
     justify-content: left;
-    background-color: gainsboro;
+    background-color: var(--navbar);
+    margin-bottom: 10px;
+    font-size: 15px;
 }
 .navitem {
     padding: 10px;
 }
 .navitem:hover {
-    background-color: whitesmoke;
+    background-color: var(--navbarsel);
 }
-.selected {
-    background-color: white;
+.selected, .selected:hover {
+    background-color: var(--back);
+    color: var(--navbarselcolor);
+}
+.sel, .sel:hover {
+    color: var(--navbarselcolor);
 }
 a, a:active, a:hover {
-    color: #000000;
+    color: var(--navbarcolor);
     text-decoration: none;
 }
 
@@ -68,7 +114,7 @@ tr {
     padding-right: 10px;
 }
 td {
-    border-top: 1px solid black;
+    border-top: 1px solid var(--border);
     padding: 5px;
     padding-bottom: 15px;
 }

@@ -8,7 +8,7 @@
 <body>
 <div class="nav">
     <div class="navitem"><a href="/">New Items</a></div>
-    <div class="selected navitem"><a href="/list">In Progress</a></div>
+    <div class="selected navitem"><a href="/list" class="sel">In Progress</a></div>
 </div>
 
 <form action="/epchange" method="post">
@@ -27,27 +27,6 @@
         </td>
         <td class="r">
             <p>{{.Ep}}</p>
-            <div class="together">
-                <button type="submit" class="green tog" name="nexts" value="{{.Id}}">+</button>
-                <button type="submit" class="blue tog" name="prevs" value="{{.Id}}">-</button>    
-            </div>
-        </td>
-        <td class="r">
-            <button type="submit" class="red" name="del" value="{{.Id}}">Del</button>
-            <button type="submit" class="black" name="done" value="{{.Id}}">Done</button> 
-        </td>
-    </tr>
-    <tr>
-        <td><p>{{.Namedd}}</p></td>
-        <td class="r">
-            <p>{{.Seasondd}}</p>
-            <div class="together">
-                <button type="submit" class="green tog" name="nexts" value="{{.Id}}">+</button>
-                <button type="submit" class="blue tog" name="prevs" value="{{.Id}}">-</button>    
-            </div>
-        </td>
-        <td class="r">
-            <p>{{.Epddd}}</p>
             <div class="together">
                 <button type="submit" class="green tog" name="nexts" value="{{.Id}}">+</button>
                 <button type="submit" class="blue tog" name="prevs" value="{{.Id}}">-</button>    
