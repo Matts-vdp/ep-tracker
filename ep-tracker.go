@@ -58,7 +58,6 @@ func ChangeEp(w http.ResponseWriter, req *http.Request) {
 	} else if s := req.Form.Get("nexts"); s != "" {
 		id, err := strconv.Atoi(s)
 		if err != nil {
-			http.Redirect(w, req, "/list", http.StatusFound)
 			return
 		}
 		storage.UpdateSeason(id, 1)
