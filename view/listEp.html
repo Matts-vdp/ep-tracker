@@ -14,7 +14,11 @@
 <form action="/epchange" method="post">
 <input type="hidden" name="target" value="/list">
 <table>
-    <th></th>
+    <th>
+        <td>Name</td>
+        <td>Season</td>
+        <td>Episode</td>
+    </th>
     {{range .}}
     <tr>
         {{if .Done}}
