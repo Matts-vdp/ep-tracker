@@ -16,6 +16,8 @@
 .red {
     background-color: #ce1e1e;
     border: 2px solid #ce1e1e;
+    padding-left: 11px;
+    padding-right: 11px;
 }
 .red:hover {background-color: #ff0000;}
 .red:active{background-color: #420000;}
@@ -54,7 +56,7 @@ button, .button {
     margin: 0px;
 }
 
-h1 {text-align: center;}
+/* Global */
 body {
     margin: 0;
     width: 100vw;
