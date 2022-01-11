@@ -14,38 +14,42 @@
 <form action="/epchange" method="post">
 <input type="hidden" name="target" value="/list">
 <table>
-    <th>
-        <td>Name</td>
-        <td>Season</td>
-        <td>Episode</td>
-    </th>
-    {{range .}}
-    <tr>
-        {{if .Done}}
-            <td><p class="done">{{.Name}}</p></td>
-        {{else}}
-            <td><p>{{.Name}}</p></td>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Season</th>
+            <th>Episode</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .}}
+        <tr>
+            {{if .Done}}
+                <td><p class="done">{{.Name}}</p></td>
+            {{else}}
+                <td><p>{{.Name}}</p></td>
+            {{end}}
+            <td class="r">
+                <p>{{.Season}}</p>
+                <div class="together">
+                    <button type="submit" class="green tog" name="nexts" value="{{.Id}}">+</button>
+                    <button type="submit" class="blue tog" name="prevs" value="{{.Id}}">-</button>    
+                </div>
+            </td>
+            <td class="r">
+                <p>{{.Ep}}</p>
+                <div class="together">
+                    <button type="submit" class="green tog" name="nexts" value="{{.Id}}">+</button>
+                    <button type="submit" class="blue tog" name="prevs" value="{{.Id}}">-</button>    
+                </div>
+            </td>
+            <td class="r">
+                <button type="submit" class="red" name="del" value="{{.Id}}">Del</button>
+                <button type="submit" class="black" name="done" value="{{.Id}}">Done</button> 
+            </td>
+        </tr>
         {{end}}
-        <td class="r">
-            <p>{{.Season}}</p>
-            <div class="together">
-                <button type="submit" class="green tog" name="nexts" value="{{.Id}}">+</button>
-                <button type="submit" class="blue tog" name="prevs" value="{{.Id}}">-</button>    
-            </div>
-        </td>
-        <td class="r">
-            <p>{{.Ep}}</p>
-            <div class="together">
-                <button type="submit" class="green tog" name="nexts" value="{{.Id}}">+</button>
-                <button type="submit" class="blue tog" name="prevs" value="{{.Id}}">-</button>    
-            </div>
-        </td>
-        <td class="r">
-            <button type="submit" class="red" name="del" value="{{.Id}}">Del</button>
-            <button type="submit" class="black" name="done" value="{{.Id}}">Done</button> 
-        </td>
-    </tr>
-    {{end}}
+    </tbody>
 </table>
 </form>
 
