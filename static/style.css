@@ -89,8 +89,23 @@ p {
     font-size: var(--fontsize);
     width: 100vw;
 }
+.navback {
+    background-color: var(--back);
+}
 .navitem {
     padding: 10px;
+    background-color: var(--navbar);
+}
+.navextra {
+    height: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.borderleft {
+    border-bottom-left-radius: 10px;
+}
+.borderright {
+    border-bottom-right-radius: 10px;
 }
 .navitem:hover {
     background-color: var(--navbarsel);
